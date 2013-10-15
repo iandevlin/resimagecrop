@@ -1,7 +1,5 @@
-resimagecrop
+resimagecrop - RESS based solution for cropping images for responsive design
 ===================================================
-- RESS based solution for cropping images for responsive design
-
 - Author: Ian Devlin [iandevlin.com](http://iandevlin.com)
 - Twitter: [@iandevlin](http://twitter.com/iandevlin)
 
@@ -27,6 +25,7 @@ Installation
 =============
 
 - Place `resimagecrop.php` in the root directory of your website (or anywhere else to be honest).
+- Use it.
 
 Usage
 =====
