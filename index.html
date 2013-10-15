@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Responsive Image Crop</title>
+	<style>
+		body {
+			font-family:verdana, sans-serif;
+			background:#C5B3A5;
+			color:#fff;
+			text-align:center;
+		}
+		figure { margin:0 0 60px; }
+		figcaption { margin-bottom:10px; }
+		img {
+			border:3px solid #fff;
+		}
+	</style>
+</head>
+<body>
+	<h1>resimagecrop in action</h1>
+	<div class="container">
+		<figure>
+			<figcaption>Normal <code>img</code> element</figcaption>
+			<img src="img/saumur-castle-loire-valley-france.jpg" alt="A view of Saumur Castle in the Loire Valley in France" />
+		</figure>
+		<figure>
+			<figcaption>Image extracted via resimagecrop.php with no parameters (same as above)</figcaption>
+			<img src="resimagecrop.php?image=img/saumur-castle-loire-valley-france.jpg" alt="A view of Saumur Castle in the Loire Valley in France" />
+		</figure>
+		<figure>
+			<figcaption>Image extracted via resimagecrop.php, scale 0.5</figcaption>
+			<img src="resimagecrop.php?image=img/saumur-castle-loire-valley-france.jpg&sc=0.5" alt="A view of Saumur Castle in the Loire Valley in France" />
+		</figure>
+		<figure>
+			<figcaption>Portion of image: top 15%, left  20%, width 550px, height 450px</figcaption>
+			<img src="resimagecrop.php?image=img/saumur-castle-loire-valley-france.jpg&x=15&y=20&w=550&h=450" alt="A view of Saumur Castle in the Loire Valley in France" />
+		</figure>
+		<figure>
+			<figcaption>Portion of image: top 15%, left  20%, width 550px, height 450px, scale 0.2 (resulting image is same as above with dimensions 110x90)</figcaption>
+			<img src="resimagecrop.php?image=img/saumur-castle-loire-valley-france.jpg&x=15&y=20&w=550&h=450&sc=0.2" alt="A view of Saumur Castle in the Loire Valley in France" />
+		</figure>
+		<figure>
+			<figcaption>Portion of image: top 15%, left  20%, width 1200px, height 600px</figcaption>
+			<img src="resimagecrop.php?image=img/saumur-castle-loire-valley-france.jpg&x=15&y=10&w=1200&h=600" alt="A view of Saumur Castle in the Loire Valley in France" />
+		</figure>
+		<figure>
+			<figcaption>Portion of image: top 15%, left  20%, width 1200px, height 600px, scale 0.5 (resulting image is same as above with dimensions 600x300)</figcaption>
+			<img src="resimagecrop.php?image=img/saumur-castle-loire-valley-france.jpg&x=15&y=10&w=1200&h=600&sc=0.5" alt="A view of Saumur Castle in the Loire Valley in France" />
+		</figure>
+	</div>
+</body>
+</html>

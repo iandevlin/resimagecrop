@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Responsive Image Crop with PictureFill</title>
+	<style>
+		body {
+			font-family:verdana, sans-serif;
+			background:#C5B3A5;
+			color:#fff;
+			text-align:center;
+		}
+		h1 { margin:5%; }
+		span[data-picture] {
+			display:block;
+			width:100%;
+			text-align:center;
+		}
+		@media only screen and (max-width:360px) {
+			h1 { font-size:90%; }
+		}
+	</style>
+</head>
+<body>
+	<h1>resImageCrop in Action with Scott Jehl's <a href="https://github.com/scottjehl/picturefill">pictureFill</a></h1>
+	<span data-picture data-alt="A view of Saumur Castle in the Loire Valley in France">
+		<span data-src="resimagecrop.php?image=img/saumur-castle-loire-valley-france.jpg&x=15&y=20&w=550&h=450&sc=0.5"></span>
+        <span data-src="resimagecrop.php?image=img/saumur-castle-loire-valley-france.jpg&x=15&y=20&w=550&h=450&sc=0.6" data-media="(min-width:360px)"></span>
+		<span data-src="resimagecrop.php?image=img/saumur-castle-loire-valley-france.jpg&x=10&y=20&w=700&h=400" data-media="(min-width:768px)"></span>
+		<span data-src="resimagecrop.php?image=img/saumur-castle-loire-valley-france.jpg&x=15&y=10&w=1200&h=600&sc=0.8" data-media="(min-width:800px)"></span>
+		<span data-src="resimagecrop.php?image=img/saumur-castle-loire-valley-france.jpg&x=15&y=10&w=1200&h=600" data-media="(min-width:1200px)"></span>
+		<span data-src="img/saumur-castle-loire-valley-france.jpg" data-media="(min-width:1600px)"></span>
+	</span>	
+	<script src="picturefill.js"></script>
+</body>
+</html>
