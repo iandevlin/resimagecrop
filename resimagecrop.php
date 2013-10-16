@@ -45,8 +45,6 @@ if ($img) {
 		$size = getimagesize($img);
 		$origWidth = intval($size[0]);
 		$origHeight = intval($size[1]);
-		// Set the correct header
-		header("Content-Type: image/jpg");
 		// If x, y, w, and h parameters have been passed...
 		if ($x && $y && $w && $h) {
 			// Work out the x and y co-ordinates of the original image where the crop is to begin
@@ -74,7 +72,7 @@ if ($img) {
 		imagejpeg($i, $cachefile);
 	}
 	// Return file
-	header("Content-Type: image/jpg");
+	header('Content-Type: image/jpg');
 	header('Content-Disposition: attachment; filename=' . $img);
 	readfile($cachefile);
 	// Tidy up
