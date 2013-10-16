@@ -75,7 +75,7 @@ if ($img) {
 		imagejpeg($i,$cachefile); // Create cache file
 	}
 	else{
-		// Need to do the following to reserve the cachefile back as the original filename
+		// Need to do the following to re-serve the cachefile back as the original filename
 		header("Content-Type: image/jpg");
 		header('Content-Disposition: attachment; filename='.$i);
 		readfile($cachefile);
