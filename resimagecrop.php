@@ -36,11 +36,13 @@ if ($img) {
 
 	// Do a little prep to find the filename of the resized and scaled file, so we can test if it's cached 
 	$w ? $width = '-'.$w : $width = '';
-	$h ? $height = 'x'.$w : $height = '';
+	$h ? $height = 'x'.$h : $height = '';
+	$x ? $xcrop = '-'.$x : $xcrop = '';
+	$y ? $ycrop = 'x'.$y : $ycrop = '';
 	$sc ? $scale = '-'.$sc : $scale = '';
 	$pi = pathinfo($img);
 
-	$cachefile = 'temp/'.basename($img, '.'.$pi['extension']).$width.$height.$scale.'.'.$pi['extension'];
+	$cachefile = 'temp/'.basename($img, '.'.$pi['extension']).$width.$height.$xcrop.$ycrop.$scale.'.'.$pi['extension'];
 
 	if(!file_exists($cachefile)){
 
