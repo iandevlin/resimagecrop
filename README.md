@@ -19,6 +19,7 @@ Features
 - RESS based
 - Allows cropping of images based on percentage x and y co-ordinates to aid art direction
 - Images can also be scaled
+- Created images are saved to aid caching (thanks to [@tadywankenobi](http://twitter.com/tadywankenobi))
 - MIT license
 
 Installation
@@ -56,5 +57,4 @@ Take image `img/saumur-castle-loire-valley-france.jpg` and begin cropping it wit
 Known Issues
 =============
 - Only supports JPGs
-- Doesn't save image file and therefore caching is not facilitated
 - Probably lots of other stuff that you clever people will notice and point out to me.
