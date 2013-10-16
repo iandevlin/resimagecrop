@@ -57,7 +57,7 @@ Recommendations
 
 It is recommended to use this in conjunction with something like Scott Jehl's <a href="https://github.com/scottjehl/picturefill">picturefill</a> script which will allow you to specify different images for different media queries.
 
-Demo
+Demos
 =============
 
 - <a href="http://iandevlin.com/resimagecrop/">Simple demo</a>
