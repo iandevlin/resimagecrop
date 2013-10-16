@@ -33,33 +33,55 @@ if ($img) {
 	$size = getimagesize($img);
 	$origWidth = intval($size[0]);
 	$origHeight = intval($size[1]);
-	// Set the correct header
-	header("Content-Type: image/jpg");
-	// If x, y, w, and h parameters have been passed...
-	if ($x && $y && $w && $h) {
-		// Work out the x and y co-ordinates of the original image where the crop is to begin
-		$cx = ($origWidth * $x) / 100;
-		$cy = ($origHeight * $y) / 100;
-		// Create a new image with the required width and height
-		$ci = imagecreatetruecolor($w, $h);
-		// Crop the image
-		imagecopy($ci, $i, 0, 0, $cx, $cy, $origWidth, $origHeight);
-		$i = $ci;
+
+	// Do a little prep to find the filename of the resized and scaled file, so we can test if it's cached 
+	$w ? $width = '-'.$w : $width = '';
+	$h ? $height = 'x'.$w : $height = '';
+	$sc ? $scale = '-'.$sc : $scale = '';
+	$pi = pathinfo($img);
+
+	$cachefile = 'temp/'.basename($img, '.'.$pi['extension']).$width.$height.$scale.'.'.$pi['extension'];
+
+	if(!file_exists($cachefile)){
+
+		// Set the correct header
+		header("Content-Type: image/jpg");
+		// If x, y, w, and h parameters have been passed...
+		if ($x && $y && $w && $h) {
+			// Work out the x and y co-ordinates of the original image where the crop is to begin
+			$cx = ($origWidth * $x) / 100;
+			$cy = ($origHeight * $y) / 100;
+			// Create a new image with the required width and height
+			$ci = imagecreatetruecolor($w, $h);
+			// Crop the image
+			imagecopy($ci, $i, 0, 0, $cx, $cy, $origWidth, $origHeight);
+			$i = $ci;
+		}
+		// If scaling is required...
+		if ($sc) {
+			if (!$w) $w = $origWidth;
+			if (!$h) $h = $origHeight;
+			// Define the width and height of the new scaled image
+			$scw = $w * $sc;
+			$sch = $h * $sc;
+			// Scale the image
+			$sci = imagecreatetruecolor($scw, $sch);
+			imagecopyresampled($sci, isset($ci) ? $ci : $i, 0, 0, 0, 0, $scw, $sch, $w, $h);
+			$i = $sci;
+		}
+		// Finish
+		imagejpeg($i); // Serve image
+		imagejpeg($i,$cachefile); // Create cache file
+		imagedestroy($i); // Free up memory
 	}
-	// If scaling is required...
-	if ($sc) {
-		if (!$w) $w = $origWidth;
-		if (!$h) $h = $origHeight;
-		// Define the width and height of the new scaled image
-		$scw = $w * $sc;
-		$sch = $h * $sc;
-		// Scale the image
-		$sci = imagecreatetruecolor($scw, $sch);
-		imagecopyresampled($sci, isset($ci) ? $ci : $i, 0, 0, 0, 0, $scw, $sch, $w, $h);
-		$i = $sci;
+	else{
+		// Need to do the following to reserve the cachefile back as the original filename
+		header("Content-Type: image/jpg");
+		header('Content-Disposition: attachment; filename='.$i);
+		readfile($cachefile);
+		imagejpeg($i);
+		imagedestroy($i);
 	}
-	// Finish
-	imagejpeg($i);
 }
 
 // Extracts parameters
