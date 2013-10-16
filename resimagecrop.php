@@ -72,18 +72,16 @@ if ($img) {
 			$i = $sci;
 		}
 		// Finish
-		imagejpeg($i); // Serve image
 		imagejpeg($i,$cachefile); // Create cache file
-		imagedestroy($i); // Free up memory
 	}
 	else{
 		// Need to do the following to reserve the cachefile back as the original filename
 		header("Content-Type: image/jpg");
 		header('Content-Disposition: attachment; filename='.$i);
 		readfile($cachefile);
-		imagejpeg($i);
-		imagedestroy($i);
 	}
+	imagejpeg($i); // Serve image
+	imagedestroy($i);
 }
 
 // Extracts parameters
