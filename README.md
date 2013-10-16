@@ -52,9 +52,13 @@ Take image `img/saumur-castle-loire-valley-france.jpg` and begin cropping it wit
 This is interpreted as:
 Take image `img/saumur-castle-loire-valley-france.jpg` and begin cropping it with dimensions 550x450 pixels, beginning from 15% from the top and 20% from the left, and scale the resulting image by a factor of 0.2 (20%).
 
+Recommendations
+=============
+
+It is recommended to use this in conjunction with something like Scott Jehl's <a href="https://github.com/scottjehl/picturefill">picturefill</a> script which will allow you to specify different images for different media queries.
 
 Known Issues
 =============
-- Only supports JPGs
+- Currently only returns JPGs
 - Doesn't save image file and therefore caching is not facilitated
 - Probably lots of other stuff that you clever people will notice and point out to me.
